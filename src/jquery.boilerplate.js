@@ -65,15 +65,17 @@
 					$(window).resize (function () {
 						if($(".fext").css("float") === "left") {
 							$(".top-bar").show();
-							$(".tab-bar").hide();
-							console.log("unappended");
+							
+							$(".fext").removeClass("appended");
+							$(".off-canvas-wrap").remove();
 						};
 
 						if($(".fext").css("float") === "none") {
 							$(".top-bar").hide();
-							$(".tab-bar").show();
-							$(".fext-container").append(concatHTML);
-							console.log("appended");
+							if(!$(".fext").hasClass("appended")) {
+								$(".fext-container").append(concatHTML);
+								$(".fext").addClass("appended");
+							}
 						};						
 					})
 				}

@@ -62,17 +62,20 @@
 					
 					var concatHTML = content.join('');
 					
-					console.log(concatHTML);
+					$(window).resize (function () {
+						if($(".fext").css("float") === "left") {
+							$(".top-bar").show();
+							$(".tab-bar").hide();
+							console.log("unappended");
+						};
 
-					if($(".fext").css("float") === "none") {
-						$(".top-bar").hide();
-						$(".fext-container").append(concatHTML);
-						console.log("appended");
-					}
-					else {
-						$(".top-bar").show();
-						
-					}
+						if($(".fext").css("float") === "none") {
+							$(".top-bar").hide();
+							$(".tab-bar").show();
+							$(".fext-container").append(concatHTML);
+							console.log("appended");
+						};						
+					})
 				}
 		};
 

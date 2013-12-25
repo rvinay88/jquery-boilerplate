@@ -20,9 +20,9 @@
 		// minified (especially when both are regularly referenced in your plugin).
 
 		// Create the defaults once
-		var pluginName = "defaultPluginName",
+		var pluginName = "fext",
 				defaults = {
-				propertyName: "value"
+				breakpoint: 768
 		};
 
 		// The actual plugin constructor
@@ -36,6 +36,7 @@
 				this._defaults = defaults;
 				this._name = pluginName;
 				this.init();
+				console.log(this.settings.breakpoint);
 		}
 
 		Plugin.prototype = {
@@ -46,10 +47,17 @@
 						// and this.settings
 						// you can add more functions like the one below and
 						// call them like so: this.yourOtherFunction(this.element, this.settings).
-						console.log("xD");
+						// this.watchBreakpoint();
 				},
-				yourOtherFunction: function () {
-						// some logic
+				watchBreakpoint: function () {
+
+$markup1 = "<div class='off-canvas-wrap'><div class='inner-wrap'><a class='left-off-canvas-toggle'>Menu</a>";
+$markup2 = "<aside class='left-off-canvas-menu'><ul><li><a href='#'>Item 1</a></li></ul></aside>";
+$markup3 = "<a class='exit-off-canvas'></a></div></div>";
+						if($(".fext").css("float") === "none") {
+							$(".fext").append($markup1).append($markup2).append($markup3);
+							console.log($markup1, $markup2, $markup3);
+						}
 				}
 		};
 

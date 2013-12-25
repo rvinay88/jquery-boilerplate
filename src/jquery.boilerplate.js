@@ -12,10 +12,8 @@
 		// minified (especially when both are regularly referenced in your plugin).
 
 		// Create the defaults once
-		var pluginName = "defaultPluginName",
-				defaults = {
-				propertyName: "value"
-		};
+		var pluginName = "fext",
+				defaults = {};
 
 		// The actual plugin constructor
 		function Plugin ( element, options ) {
@@ -38,10 +36,43 @@
 						// and this.settings
 						// you can add more functions like the one below and
 						// call them like so: this.yourOtherFunction(this.element, this.settings).
-						console.log("xD");
+						this.watchBreakpoint();
 				},
-				yourOtherFunction: function () {
-						// some logic
+				watchBreakpoint: function () {
+
+					$outerWrapperMakrup = "<div class='off-canvas-wrap'><div class='inner-wrap'>";
+					$tabBarleftMarkup = "<nav class='tab-bar'><section class='left-small'><a class='left-off-canvas-toggle menu-icon'><span></span></a></section>";
+					$tabBarMiddleMarkup = "<section class='middle tab-bar-section'></section>"
+					$tabBarRightMarkup = "<section class='right-small'><a class='right-off-canvas-toggle menu-icon' ><span></span></a></section></nav>";
+					$leftAsideMarkup = "<aside class='left-off-canvas-menu'><ul class='off-canvas-list'><li><label>Foundation</label></li></ul></aside>";
+					$rightAsideMarkup = "<aside class='right-off-canvas-menu'><ul class='off-canvas-list'><li><label>Foundation</label></li></ul></aside>";
+					$mainSectionMarkup = "<section class='main-section'></section>";
+					$wrapperClosure = "<a class='exit-off-canvas'></a></div></div>";
+					
+					var content = [
+						$outerWrapperMakrup,
+						$tabBarleftMarkup,
+						$tabBarMiddleMarkup,
+						$tabBarRightMarkup,
+						$leftAsideMarkup,
+						$rightAsideMarkup,
+						$mainSectionMarkup,
+						$wrapperClosure
+					];
+					
+					var concatHTML = content.join('');
+					
+					console.log(concatHTML);
+
+					if($(".fext").css("float") === "none") {
+						$(".top-bar").hide();
+						$(".fext-container").append(concatHTML);
+						console.log("appended");
+					}
+					else {
+						$(".top-bar").show();
+						
+					}
 				}
 		};
 
